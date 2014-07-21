@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Team CURCUMA - Quest Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="libs/js/libs/jquery/jquery.min.js" type="text/javascript"></script>
+        <link href="design/styles/main.css" rel="stylesheet" type="text/css"/>
+        <script src="engine/movement.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(function() {
+                var move = new movement();
+                var interval = null;
+                var moveSpeed = 15;
+
+                addEventListener("keydown", function(e) {
+                    if (interval == null) {
+                        console.log("start interval");
+
+                        if (e.keyCode == 37) {
+                            interval = setInterval(function() {
+                                var leftPos = parseInt($("#player").css("left"));
+                                var newPosition = leftPos - moveSpeed;
+
+                                if (newPosition < 0) {
+                                    newPosition = 0;
+                                }
+
+                                $("#player").css({left: newPosition});
+                            }, 50);
+                        } else if (e.keyCode == 38) {
+                            interval = setInterval(function() {
+                                var topPos = parseInt($("#player").css("top"));
+                                var newPosition = topPos - moveSpeed;
+
+                                if (newPosition < 0) {
+                                    newPosition = 0;
+                                }
+                                
+                                $("#player").css({top: newPosition});
+                            }, 50);
+                        } else if (e.keyCode == 39) {
+                            interval = setInterval(function() {
+                                var leftPos = parseInt($("#player").css("left"));
+                                var newPosition = leftPos + moveSpeed;
+
+                                if (newPosition > 755) {
+                                    newPosition = 755;
+                                }
+
+                                $("#player").css({left: newPosition});
+                            }, 50);
+                        } else if (e.keyCode == 40) {
+                            interval = setInterval(function() {
+                                var topPos = parseInt($("#player").css("top"));
+                                var newPosition = topPos + moveSpeed;
+
+                                if (newPosition > 480) {
+                                    newPosition = 480;
+                                }
+                                
+                                $("#player").css({top: newPosition});
+                            }, 50);
+                        }
+                    }
+
+                    move.setKeyDown(e.keyCode);
+                }, false);
+
+                addEventListener("keyup", function(e) {
+                    if (interval != null) {
+                        console.log("end interval");
+                        clearInterval(interval);
+                        interval = null;
+                    }
+
+                    move.unSetKeyDown(e.keyCode);
+                }, false);
+
+                $("#test").click(function() {
+                    move.geyKeysDown();
+                });
+
+
+            });
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="lecturer-1">Лектор-1</div>
+            <div id="lecturer-2">Лектор-2</div>
+            <div id="lecturer-3">Лектор-3</div>
+            <div id="lecturer-4">Лектор-4</div>
+            <div id="player">Играч</div>
+        </div>
+
+        <input type="button" id="test" value="test" />
+    </body>
+</html>

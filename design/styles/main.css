@@ -1,0 +1,37 @@
+#wrapper {
+    width: 800px;
+    height: 500px;
+    margin: 0px auto;
+    background-color: #5283BF;
+    border: 1px solid #000000;
+    position: relative;
+}
+
+#player, #lecturer-1, #lecturer-2, #lecturer-3, #lecturer-4 {
+    position: absolute;
+}
+
+#lecturer-1 {
+    top: 50px;
+    left: 100px;
+}
+
+#lecturer-2 {
+    top: 40px;
+    left: 700px;
+}
+
+#lecturer-3 {
+    top: 400px;
+    left: 120px;
+}
+
+#lecturer-4 {
+    top: 440px;
+    left: 600px;
+}
+
+#player {
+    top: 50%;
+    left: 50%;
+}
