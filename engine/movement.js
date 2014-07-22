@@ -68,8 +68,6 @@ var movement = function() {
 
             unSetKeyDown(e.keyCode);
         }, false);
-
-        return interval;
     };
     
     this.__construct = function (){
