@@ -30,13 +30,19 @@ var questCollision = function() {
             for (var key in questCoordinates) {
                 var obj = questCoordinates[key];
                 var questWidth = $("#" + key).width();
+                
+                //right offset calculation ("Thank you" Google Chrome, IE, Opera and Safari!)
                 var right = wrapperWidth - questWidth - obj.left;
+                //top position detection
                 var topStart = obj.top - playerHeight - radius;
                 var topEnd = obj.top + playerHeight + radius;
+                //Nearby detection for the left positioned elements
                 var leftStart = obj.left - playerWidth - radius;
                 var leftEnd = obj.left + playerWidth + questWidth + radius;
+                //Nearby detection for the right positioned elements
                 var rightStart = right + radius + playerWidth;
                 var rightEnd = right - radius - playerWidth;
+                //player coordinates
                 var playerTop = playerCoords.top;
                 var playerLeft = playerCoords.left;
                 var playerRight = playerCoords.right;
@@ -50,7 +56,7 @@ var questCollision = function() {
                     overQuest = null;
                 }
             }
-        }, 200);
+        }, 150);
     }
 
     this.__construct = function() {
