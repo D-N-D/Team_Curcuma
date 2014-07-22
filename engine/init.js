@@ -2,7 +2,9 @@ $(function() {
     var move = new movement();
     var interval = null;
     var moveSpeed = 15;
-
+    var maxLeft = $("#wrapper").width() - $("#player").width();
+    var maxTop = $("#wrapper").height() - $("#player").height();
+    
     addEventListener("keydown", function(e) {
         if (interval == null) {
             if (e.keyCode == 37) {
@@ -32,8 +34,8 @@ $(function() {
                     var leftPos = parseInt($("#player").css("left"));
                     var newPosition = leftPos + moveSpeed;
 
-                    if (newPosition > 755) {
-                        newPosition = 755;
+                    if (newPosition > maxLeft) {
+                        newPosition = maxLeft;
                     }
 
                     $("#player").css({left: newPosition});
@@ -43,8 +45,8 @@ $(function() {
                     var topPos = parseInt($("#player").css("top"));
                     var newPosition = topPos + moveSpeed;
 
-                    if (newPosition > 480) {
-                        newPosition = 480;
+                    if (newPosition > maxTop) {
+                        newPosition = maxTop;
                     }
 
                     $("#player").css({top: newPosition});
@@ -67,6 +69,4 @@ $(function() {
     $("#test").click(function() {
         move.geyKeysDown();
     });
-
-
 });
