@@ -5,26 +5,26 @@ var questCollision = function() {
     var playerWidth = $("#player").width();
     var overQuest = null;
     var radius = 50;
-
-    this.getQuestsCoordinates = function() {
+    
+    function getQuestsCoordinates() {
         $(".quest").each(function() {
             var id = $(this).attr("id");
             var leftPos = parseInt($(this).css("left"));
             var topPos = parseInt($(this).css("top"));
             questCoordinates[id] = {left: leftPos, top: topPos};
         });
-    };
+    }
 
-    this.setPlayerCoordinates = function() {
+    function getPlayerCoordinates() {
         setInterval(function() {
             var posLeft = parseInt($("#player").css("left"));
             var posRight = parseInt($("#player").css("top"));
             var posTop = parseInt($("#player").css("top"));
             playerCoords = {left: posLeft, top: posTop, right: posRight};
         }, 1000);
-    };
+    }
 
-    this.questCollisionChecker = function() {
+    function questCollisionChecker() {
         setInterval(function() {
             for (var key in questCoordinates) {
                 var obj = questCoordinates[key];
@@ -45,12 +45,22 @@ var questCollision = function() {
                 var topExpression = (playerTop >= topStart && playerTop <= topEnd);
 
                 if ((topExpression && playerLeft >= leftStart && playerLeft <= leftEnd) ||
-                    (topExpression && rightStart >= playerRight && rightEnd >= playerRight)) {
+                        (topExpression && rightStart >= playerRight && rightEnd >= playerRight)) {
                     overQuest = key;
-                } else if(key == overQuest){
+                } else if (key == overQuest) {
                     overQuest = null;
                 }
             }
         }, 1000);
+    }
+
+    this.__construct = function() {
+        getQuestsCoordinates();
+        getPlayerCoordinates();
+        questCollisionChecker();
+    };
+    
+    this.getOverQuest = function (){
+        return overQuest;
     };
 };

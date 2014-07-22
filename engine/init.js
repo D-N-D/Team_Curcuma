@@ -3,8 +3,11 @@ $(function() {
     var collision = new questCollision();
 
     move.__construct();
-    
-    collision.getQuestsCoordinates();
-    collision.setPlayerCoordinates();
-    collision.questCollisionChecker();
+    collision.__construct();
+
+    addEventListener("keydown", function(e) {
+        if (e.keyCode == 13) {
+            alert(collision.getOverQuest());
+        }
+    }, false);
 });

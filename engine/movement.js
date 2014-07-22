@@ -8,12 +8,12 @@ var movement = function() {
     function setKeyDown(keyCode) {
         keysDown[keyCode] = true;
         return this.keysDown;
-    };
+    }
 
     function unSetKeyDown(keyCode) {
         delete keysDown[keyCode];
         return this.keysDown;
-    };
+    }
 
     function movePlayer(direction, type, moveSpeed, limit) {
         return setInterval(function() {
@@ -39,8 +39,8 @@ var movement = function() {
                 $("#player").css({left: newPosition});
             }
         }, 50);
-    };
-    
+    }
+
     function keyDownListener() {
         addEventListener("keydown", function(e) {
             if (interval == null) {
@@ -57,8 +57,8 @@ var movement = function() {
 
             setKeyDown(e.keyCode);
         }, false);
-    };
-    
+    }
+
     function keyUpListener() {
         addEventListener("keyup", function(e) {
             if (interval != null) {
@@ -68,9 +68,9 @@ var movement = function() {
 
             unSetKeyDown(e.keyCode);
         }, false);
-    };
-    
-    this.__construct = function (){
+    }
+
+    this.__construct = function() {
         keyDownListener();
         keyUpListener();
     };
