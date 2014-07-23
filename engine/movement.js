@@ -1,7 +1,7 @@
 var movement = function() {
     var keysDown = {};
     var interval = null;
-    var moveSpeed = 15;
+    var moveSpeed = 10;
     var maxLeft = $("#wrapper").width() - $("#player").width();
     var maxTop = $("#wrapper").height() - $("#player").height();
 
@@ -44,13 +44,13 @@ var movement = function() {
     function keyDownListener() {
         addEventListener("keydown", function(e) {
             if (interval == null) {
-                if (e.keyCode == 37) {
+                if (e.keyCode == 37) {  //left arrow
                     interval = movePlayer("left", "-", moveSpeed);
-                } else if (e.keyCode == 38) {
+                } else if (e.keyCode == 38) { //up arrow
                     interval = movePlayer("top", "-", moveSpeed);
-                } else if (e.keyCode == 39) {
+                } else if (e.keyCode == 39) { //right arrow
                     interval = movePlayer("left", "+", moveSpeed, maxLeft);
-                } else if (e.keyCode == 40) {
+                } else if (e.keyCode == 40) { //down arrow
                     interval = movePlayer("top", "+", moveSpeed, maxTop);
                 }
             }

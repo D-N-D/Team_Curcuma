@@ -35,7 +35,7 @@ var questCollision = function() {
                 var right = wrapperWidth - questWidth - obj.left;
                 //top position detection
                 var topStart = obj.top - playerHeight - radius;
-                var topEnd = obj.top + playerHeight + radius;
+                var topEnd = obj.top + playerHeight + radius + ($("#" + key).height());
                 //Nearby detection for the left positioned elements
                 var leftStart = obj.left - playerWidth - radius;
                 var leftEnd = obj.left + playerWidth + questWidth + radius;
