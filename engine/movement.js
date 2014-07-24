@@ -1,9 +1,9 @@
 var movement = function() {
-    var keysDown = {};
     var interval = null;
     var moveSpeed = 10;
     var maxLeft = $("#wrapper").width() - $("#player").width();
     var maxTop = $("#wrapper").height() - $("#player").height();
+    var lastKeyPressed = 0;
 
     function movePlayer(direction, type, moveSpeed, limit) {
         return setInterval(function() {
@@ -34,8 +34,8 @@ var movement = function() {
     function keyDownListener() {
         addEventListener("keydown", function(e) {
             var key = e.keyCode;
-            
-            if (interval == null) {    
+
+            if (interval == null) {
                 if (key == 37) {  //left arrow
                     interval = movePlayer("left", "-", moveSpeed);
                 } else if (key == 38) { //up arrow
@@ -45,6 +45,8 @@ var movement = function() {
                 } else if (key == 40) { //down arrow
                     interval = movePlayer("top", "+", moveSpeed, maxTop);
                 }
+
+                lastKeyPressed = key;
             }
         }, false);
     }
@@ -52,13 +54,17 @@ var movement = function() {
     function keyUpListener() {
         addEventListener("keyup", function(e) {
             var key = e.keyCode;
-            
+
             if (interval != null && key >= 37 && key <= 40) {
                 clearInterval(interval);
                 interval = null;
             }
         }, false);
     }
+
+    this.getLastKeyPressed = function() {
+        return lastKeyPressed;
+    };
 
     this.__construct = function() {
         keyDownListener();

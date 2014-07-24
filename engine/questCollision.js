@@ -22,7 +22,7 @@ var questCollision = function() {
             var posRight = wrapperWidth - playerWidth - posLeft;
             var posTop = parseInt($("#player").css("top") || 0);
             playerCoords = {left: posLeft, top: posTop, right: posRight};
-        }, 1000);
+        }, 150);
     }
 
     function questCollisionChecker() {
