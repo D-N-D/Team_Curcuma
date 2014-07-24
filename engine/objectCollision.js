@@ -60,9 +60,9 @@ var objectCollision = function(movement) {
                     } else if (lastKey == 38) {
                         changeParams = {top: (obj.topEnd + 10)};
                     } else if (lastKey == 39) {
-                        changeParams = {left: (obj.left - 10)};
+                        changeParams = {left: (obj.left - 40)};
                     } else if (lastKey == 40) {
-                        changeParams = {top: (obj.top - 10)};
+                        changeParams = {top: (obj.top - 43)};
                     }
 
                     $("#player").css(changeParams);
