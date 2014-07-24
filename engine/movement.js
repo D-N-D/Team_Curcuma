@@ -5,16 +5,6 @@ var movement = function() {
     var maxLeft = $("#wrapper").width() - $("#player").width();
     var maxTop = $("#wrapper").height() - $("#player").height();
 
-    function setKeyDown(keyCode) {
-        keysDown[keyCode] = true;
-        return this.keysDown;
-    }
-
-    function unSetKeyDown(keyCode) {
-        delete keysDown[keyCode];
-        return this.keysDown;
-    }
-
     function movePlayer(direction, type, moveSpeed, limit) {
         return setInterval(function() {
             var currentPosition = parseInt($("#player").css(direction));
@@ -43,30 +33,30 @@ var movement = function() {
 
     function keyDownListener() {
         addEventListener("keydown", function(e) {
-            if (interval == null) {
-                if (e.keyCode == 37) {  //left arrow
+            var key = e.keyCode;
+            
+            if (interval == null) {    
+                if (key == 37) {  //left arrow
                     interval = movePlayer("left", "-", moveSpeed);
-                } else if (e.keyCode == 38) { //up arrow
+                } else if (key == 38) { //up arrow
                     interval = movePlayer("top", "-", moveSpeed);
-                } else if (e.keyCode == 39) { //right arrow
+                } else if (key == 39) { //right arrow
                     interval = movePlayer("left", "+", moveSpeed, maxLeft);
-                } else if (e.keyCode == 40) { //down arrow
+                } else if (key == 40) { //down arrow
                     interval = movePlayer("top", "+", moveSpeed, maxTop);
                 }
             }
-
-            setKeyDown(e.keyCode);
         }, false);
     }
 
     function keyUpListener() {
         addEventListener("keyup", function(e) {
-            if (interval != null) {
+            var key = e.keyCode;
+            
+            if (interval != null && key >= 37 && key <= 40) {
                 clearInterval(interval);
                 interval = null;
             }
-
-            unSetKeyDown(e.keyCode);
         }, false);
     }
 

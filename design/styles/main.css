@@ -2,12 +2,13 @@
     width: 800px;
     height: 600px;
     margin: 0px auto;
-    background-image: url('../images/Sprite/map/New_Map.png');
+    background-image: url('../images/Sprite/map/Final_map.png');
+    background-position: 0px -200px;
     border: 1px solid #000000;
     position: relative;
 }
 
-#player, #lecturer-1, #lecturer-2, #lecturer-3, #lecturer-4 {
+#player, .quest {
     position: absolute;
 }
 
@@ -41,8 +42,8 @@
     background-position: 30px 0px;
     width: 30px;
     height: 33px;
-    top: 545px;
-    left: 615px;
+    top: 520px;
+    left: 755px;
 }
 
 #boss {
