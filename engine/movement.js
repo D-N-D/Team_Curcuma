@@ -35,7 +35,7 @@ var movement = function() {
         addEventListener("keydown", function(e) {
             var key = e.keyCode;
 
-            if (interval == null) {
+            if (interval == null && !$("#dialog").is(":visible") ) {
                 if (key == 37) {  //left arrow
                     interval = movePlayer("left", "-", moveSpeed);
                 } else if (key == 38) { //up arrow

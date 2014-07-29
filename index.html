@@ -9,12 +9,12 @@
         <link href="design/styles/mapCollision.css" rel="stylesheet" type="text/css"/>
         <script src="engine/objectCollision.js" type="text/javascript"></script>
         <script src="engine/questCollision.js" type="text/javascript"></script>
+        <script src="engine/takeQuest.js" type="text/javascript"></script>
         <script src="engine/movement.js" type="text/javascript"></script>
         <script src="engine/init.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="wrapper">
-            <div id="boss"></div>
             <div id="block-1" class="collision"></div>
             <div id="block-2" class="collision"></div>
             <div id="block-3" class="collision"></div>
@@ -43,6 +43,11 @@
                 <img src="design/images/Sprite/Soft_uni_team/vladi_glow.png" alt="Лектор-4" />
             </div>
             <div id="player"></div>
+            <div id="dialog" class="l-1-background"></div>
+            <div id="codebox">
+                <textarea id="code"></textarea>
+                <button id="submit">Да те видим какво си научил!</button>
+            </div>
         </div>
     </body>
 </html>
