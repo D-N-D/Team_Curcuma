@@ -1,11 +1,34 @@
 var takeQuest = function(collision) {
     var questTaken = null;
+    var questNum = null;
+
+    function submitListener() {
+        $("#submit").click(function() {
+            if (questNum != null) {
+                var userInput = $("#code").val();
+                eval(userInput.toLowerCase());
+                var output = solve();
+                
+                if (output == "0123456789" && questNum == 1) {
+                    alert("reshena - 1");
+                } else if (output == "0123456789" && questNum == 2) {
+                    alert("reshena - 2");
+                } else if (output == "0123456789" && questNum == 3) {
+                    alert("reshena - 3");
+                } else if (output == "0123456789" && questNum == 4) {
+                    alert("reshena - 4");
+                }
+            }
+        });
+    }
 
     function keyDownListener() {
         addEventListener("keydown", function(e) {
             if (e.keyCode == 13) {
                 if (collision.getOverQuest() != null && questTaken == null) {
-                    acceptQuest(collision.getOverQuest());
+                    var questNumber = collision.getOverQuest().split("-")[1];
+                    questNum = questNumber;
+                    acceptQuest(questNumber);
                 } else if (collision.getOverQuest() != null && questTaken != null) {
                     showCodeBox();
                 }
@@ -16,12 +39,12 @@ var takeQuest = function(collision) {
     }
 
     function acceptQuest(quest) {
-        var questNumber = quest.split("-")[1];
-        $("#dialog").hide(500).removeClass().show(100).addClass("l-" + questNumber + "-background");
+        $("#dialog").hide(500).removeClass().show(100).addClass("l-" + quest + "-background");
         questTaken = quest;
     }
 
     function showCodeBox() {
+        $("#code").val("");
         $("#codebox").show(100);
     }
 
@@ -29,9 +52,11 @@ var takeQuest = function(collision) {
         $("#dialog").hide(100);
         $("#codebox").hide(100);
         questTaken = null;
+        questNum = null;
     }
 
     this.__construct = function() {
         keyDownListener();
+        submitListener();
     };
 };
