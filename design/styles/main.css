@@ -39,9 +39,9 @@
 
 #player {
     background-image: url('../images/Sprite/Charecter/charecter-2.png');
-    background-position: 30px 0px;
+    background-position: 0px 0px;
     width: 30px;
-    height: 33px;
+    height: 32px;
     top: 520px;
     left: 755px;
 }
