@@ -1,23 +1,40 @@
 var takeQuest = function(collision) {
     var questTaken = null;
     var questNum = null;
-
+    var questScore = [0, 0, 0, 0];
     function submitListener() {
         $("#submit").click(function() {
             if (questNum != null) {
                 var userInput = $("#code").val();
                 eval(userInput.toLowerCase());
                 var output = solve();
-                
+
                 if (output == "0123456789" && questNum == 1) {
-                    alert("reshena - 1");
+                    questScore[questNum] = 100;
+                    showWinScreen();
                 } else if (output == "0123456789" && questNum == 2) {
-                    alert("reshena - 2");
+                    questScore[questNum] = 100;
+                    showWinScreen();
                 } else if (output == "0123456789" && questNum == 3) {
-                    alert("reshena - 3");
+                    questScore[questNum] = 100;
+                    showWinScreen();
                 } else if (output == "0123456789" && questNum == 4) {
-                    alert("reshena - 4");
+                    questScore[questNum] = 100;
+                    showWinScreen();
+                } else {
+                    questScore[questNum] = 0;
+                    showLoseScreen();
                 }
+                
+                $("#score").html(function(){
+                    var totalScore = 0;
+                    
+                    for (var i = 0; i < questScore.length; i++){
+                        totalScore += questScore[i];
+                    }
+                    
+                    return totalScore;
+                });
             }
         });
     }
@@ -29,7 +46,7 @@ var takeQuest = function(collision) {
                     var questNumber = collision.getOverQuest().split("-")[1];
                     questNum = questNumber;
                     acceptQuest(questNumber);
-                } else if (collision.getOverQuest() != null && questTaken != null) {
+                } else if (collision.getOverQuest() != null && questTaken != null && !$("#codebox").is(":visible")) {
                     showCodeBox();
                 }
             } else if (e.keyCode == 27) {
@@ -46,6 +63,16 @@ var takeQuest = function(collision) {
     function showCodeBox() {
         $("#code").val("");
         $("#codebox").show(100);
+    }
+    
+    function showWinScreen() {
+        $("#codebox").hide(100);
+        hideQuestItems();
+    }
+    
+    function showLoseScreen() {
+        $("#codebox").hide(100);
+        hideQuestItems();
     }
 
     function hideQuestItems() {
