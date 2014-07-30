@@ -25,20 +25,22 @@ var takeQuest = function(collision) {
                 } else if (output == "0123456789" && questNum == 4) {
                     questScore[questNum] = 100;
                     showWinScreen();
-                } else {
+                } else if(questNum != null && userInput != "") {
                     questScore[questNum] = 0;
                     showLoseScreen();
                 }
 
-                $("#score").html(function() {
-                    var totalScore = 0;
+                var totalScore = 0;
 
-                    for (var i = 0; i < questScore.length; i++) {
-                        totalScore += questScore[i];
-                    }
+                for (var i = 0; i < questScore.length; i++) {
+                    totalScore += questScore[i];
+                }
 
-                    return totalScore;
-                });
+                $("#score").html(totalScore);
+                
+                if(totalScore == 400){
+                    showWinEndScreen();
+                }
             }
         });
     }
@@ -65,7 +67,7 @@ var takeQuest = function(collision) {
     }
 
     function showCodeBox() {
-        $("#code").val("");
+        $("#code").val("").focus();
         $("#codebox").show(100);
     }
 
@@ -73,6 +75,12 @@ var takeQuest = function(collision) {
         $("#codebox").hide(100);
         hideQuestItems();
         $("#win-screen").delay(200).slideDown(500).delay(500).fadeOut(500);
+    }
+    
+    function showWinEndScreen() {
+        $("#codebox").hide(100);
+        hideQuestItems();
+        $("#win-end-screen").delay(500).slideDown(500);
     }
 
     function showLoseScreen() {
