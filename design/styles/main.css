@@ -118,7 +118,8 @@
     max-height: 400px;
     max-width: 740px;
     height: 420px;
-    border-radius: 5%;
+    border-radius: 2%;
+    background-color: lightgrey;
 }
 
 #submit {
