@@ -29,6 +29,11 @@ var takeQuest = function(collision) {
                     questScore[questNum] = 0;
                     showLoseScreen();
                 }
+                else if(output = "undefined") {
+                    questScore[questNum] = 0;
+                    showLoseScreen();
+                }
+
 
                 var totalScore = 0;
 

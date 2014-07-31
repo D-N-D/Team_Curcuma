@@ -115,7 +115,14 @@
 }
 
 #code {
-    max-height: 420px;
+    max-height: 400px;
     max-width: 740px;
     height: 420px;
+    border-radius: 5%;
+}
+
+#submit {
+    font-size: 30px;
+    border-radius: 10%;
+    background-color: coral;
 }
