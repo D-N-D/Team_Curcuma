@@ -6,6 +6,13 @@ var takeQuest = function(collision, audio) {
         $("#submit").click(function() {
             if (questNum != null) {
                 var userInput = $("#code").val();
+
+                if (userInput.trim().split(" ")[0] != "function") {
+                    questScore[questNum] = 0;
+                    showLoseScreen();
+                    return;
+                }
+
                 var output = undefined;
                 eval(userInput.toLowerCase());
 
@@ -45,7 +52,7 @@ var takeQuest = function(collision, audio) {
                 if (totalScore == 400) {
                     showWinEndScreen();
                 }
-                
+
                 solve = undefined;
             }
         });
