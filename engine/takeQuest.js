@@ -83,7 +83,7 @@ var takeQuest = function(collision, audio) {
 
     function showCodeBox() {
         audio.solving(1);
-        $("#code").val("").focus();
+        $("#code").val("fcuntion solve(){\n\n}").focus();
         $("#codebox").show(100);
     }
 
@@ -91,18 +91,18 @@ var takeQuest = function(collision, audio) {
         $("#codebox").hide(100);
         hideQuestItems();
         audio.win();
-        $("#win-screen").delay(200).slideDown(500).delay(500).fadeOut(500);
+        $("#win-screen").delay(200).slideDown(500).delay(2000).fadeOut(500);
     }
 
     function showWinEndScreen() {
         $("#codebox").hide(100);
         hideQuestItems();
-        $("#win-end-screen").delay(500).slideDown(500);
+        $("#win-end-screen").delay(1500).slideDown(500);
     }
 
     function showLoseScreen() {
         audio.lose();
-        $("#loose-screen").delay(200).slideDown(500).delay(500).fadeOut(500);
+        $("#loose-screen").delay(200).slideDown(500).delay(1500).fadeOut(500);
     }
 
     function hideQuestItems() {
@@ -112,7 +112,7 @@ var takeQuest = function(collision, audio) {
         questTaken = null;
         questNum = null;
     }
-
+    
     this.__construct = function() {
         keyDownListener();
         submitListener();
