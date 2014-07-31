@@ -6,8 +6,10 @@ var takeQuest = function(collision, audio) {
         $("#submit").click(function() {
             if (questNum != null) {
                 var userInput = $("#code").val();
-
-                if (userInput.trim().split(" ")[0] != "function") {
+                //not the best way to do it
+                var functionCheck = userInput.trim().split(" ")[0];
+                
+                if (functionCheck != "function") {
                     questScore[questNum] = 0;
                     showLoseScreen();
                     return;

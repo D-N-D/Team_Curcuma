@@ -1,3 +1,7 @@
+body {
+    background-color: silver;
+}
+
 #wrapper {
     width: 800px;
     height: 600px;
