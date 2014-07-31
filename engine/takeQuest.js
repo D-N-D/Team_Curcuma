@@ -83,7 +83,7 @@ var takeQuest = function(collision, audio) {
 
     function showCodeBox() {
         audio.solving(1);
-        $("#code").val("fcuntion solve(){\n\n}").focus();
+        $("#code").val("function solve(){\n\n}").focus();
         $("#codebox").show(100);
     }
 
