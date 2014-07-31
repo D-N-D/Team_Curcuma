@@ -26,19 +26,19 @@ var takeQuest = function(collision, audio) {
                     return;
                 }
 
-                if (output == "0123456789" && questNum == 1) {
+                if (output == "dec 25" && questNum == 1) {
                     questScore[questNum] = 100;
                     showWinScreen();
-                } else if (output == "0123456789" && questNum == 2) {
+                } else if (output == "стига сте мрънкали!" && questNum == 2) {
                     questScore[questNum] = 100;
                     showWinScreen();
-                } else if (output == "0123456789" && questNum == 3) {
+                } else if (output == 12 && questNum == 3) {
                     questScore[questNum] = 100;
                     showWinScreen();
-                } else if (output == "0123456789" && questNum == 4) {
+                } else if (output == "12345678910" && questNum == 4) {
                     questScore[questNum] = 100;
                     showWinScreen();
-                } else if (questNum != null && userInput != "" && output != undefined) {
+                } else if (questNum != null && userInput != "") {
                     questScore[questNum] = 0;
                     showLoseScreen();
                 }
