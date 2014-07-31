@@ -1,4 +1,4 @@
-var takeQuest = function(collision) {
+var takeQuest = function(collision, audio) {
     var questTaken = null;
     var questNum = null;
     var questScore = [0, 0, 0, 0];
@@ -11,7 +11,7 @@ var takeQuest = function(collision) {
 
                 if (typeof solve == 'function') {
                     output = solve();
-                } else {
+                } else if (userInput != "") {
                     questScore[questNum] = 0;
                     showLoseScreen();
                     return;
@@ -29,7 +29,7 @@ var takeQuest = function(collision) {
                 } else if (output == "0123456789" && questNum == 4) {
                     questScore[questNum] = 100;
                     showWinScreen();
-                } else if (questNum != null && userInput != "") {
+                } else if (questNum != null && userInput != "" && output != undefined) {
                     questScore[questNum] = 0;
                     showLoseScreen();
                 }
@@ -45,6 +45,8 @@ var takeQuest = function(collision) {
                 if (totalScore == 400) {
                     showWinEndScreen();
                 }
+                
+                solve = undefined;
             }
         });
     }
@@ -71,6 +73,7 @@ var takeQuest = function(collision) {
     }
 
     function showCodeBox() {
+        audio.solving(1);
         $("#code").val("").focus();
         $("#codebox").show(100);
     }
@@ -78,6 +81,7 @@ var takeQuest = function(collision) {
     function showWinScreen() {
         $("#codebox").hide(100);
         hideQuestItems();
+        audio.win();
         $("#win-screen").delay(200).slideDown(500).delay(500).fadeOut(500);
     }
 
@@ -88,10 +92,12 @@ var takeQuest = function(collision) {
     }
 
     function showLoseScreen() {
+        audio.lose();
         $("#loose-screen").delay(200).slideDown(500).delay(500).fadeOut(500);
     }
 
     function hideQuestItems() {
+        audio.solving(0);
         $("#dialog").hide(100);
         $("#codebox").hide(100);
         questTaken = null;
