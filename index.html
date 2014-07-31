@@ -9,6 +9,7 @@
         <link href="design/styles/mapCollision.css" rel="stylesheet" type="text/css"/>
         <script src="engine/objectCollision.js" type="text/javascript"></script>
         <script src="engine/questCollision.js" type="text/javascript"></script>
+        <script src="engine/gameAudio.js" type="text/javascript"></script>
         <script src="engine/takeQuest.js" type="text/javascript"></script>
         <script src="engine/movement.js" type="text/javascript"></script>
         <script src="engine/init.js" type="text/javascript"></script>
@@ -61,5 +62,10 @@
                 <button id="submit">Let's check what you've learned!</button>
             </div>
         </div>
+
+        <audio id="win-sound" src="design/sounds/WinNormal.wav" controls></audio><br />
+        <audio id="lose-sound" src="design/sounds/LooseBoss.wav" controls></audio><br />
+        <audio id="solving-sound" src="design/sounds/WhileSolving.wav" controls></audio><br />
+        <audio id="walking-sound" src="design/sounds/walking.wav" controls></audio><br />
     </body>
 </html>

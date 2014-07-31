@@ -1,4 +1,4 @@
-var movement = function() {
+var movement = function(audio) {
     var interval = null;
     var animateInterval = null;
     var moveSpeed = 5;
@@ -10,6 +10,7 @@ var movement = function() {
     function movePlayer(direction, type, moveSpeed, limit) {
         return setInterval(function() {
             var currentPosition = parseInt($("#player").css(direction));
+            audio.footsteps(1);
 
             if (type == "-") {
                 var newPosition = currentPosition - moveSpeed;
@@ -83,6 +84,7 @@ var movement = function() {
             var key = e.keyCode;
 
             if (interval != null && key >= 37 && key <= 40) {
+                audio.footsteps(0);
                 clearInterval(animateInterval);
                 clearInterval(interval);
                 animateInterval = null;
